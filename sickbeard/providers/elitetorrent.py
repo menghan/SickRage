@@ -26,7 +26,6 @@ import sickbeard
 from sickbeard import logger, tvcache
 from sickbeard.bs4_parser import BS4Parser
 from sickbeard.common import cpu_presets
-
 from sickrage.helper.common import try_int
 from sickrage.providers.torrent.TorrentProvider import TorrentProvider
 
@@ -110,7 +109,7 @@ class EliteTorrentProvider(TorrentProvider):
                                 title = self._processTitle(row.find('a', class_='nombre')['title'])
                                 seeders = try_int(row.find('td', class_='semillas').get_text(strip=True))
                                 leechers = try_int(row.find('td', class_='clientes').get_text(strip=True))
-                                
+
                                 #seeders are not well reported. Set 1 in case of 0
                                 seeders = max(1, seeders)
 

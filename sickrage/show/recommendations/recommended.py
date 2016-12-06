@@ -26,7 +26,6 @@ import posixpath
 
 import sickbeard
 from sickbeard import helpers
-
 from sickrage.helper.encoding import ek
 
 

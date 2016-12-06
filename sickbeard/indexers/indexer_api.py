@@ -19,12 +19,11 @@
 # along with SickRage. If not, see <http://www.gnu.org/licenses/>.
 
 import os
+
 import sickbeard
+from indexer_config import indexerConfig, initConfig
 from sickrage.helper.common import try_int
 from sickrage.helper.encoding import ek
-
-from indexer_config import initConfig
-from indexer_config import indexerConfig
 
 
 class indexerApi(object):

@@ -18,6 +18,7 @@
 # along with SickRage. If not, see <http://www.gnu.org/licenses/>.
 
 from os.path import join
+
 from sickrage.helper.encoding import ek
 from sickrage.media.GenericMedia import GenericMedia
 

@@ -18,13 +18,13 @@
 # You should have received a copy of the GNU General Public License
 # along with SickRage. If not, see <http://www.gnu.org/licenses/>.
 
-from requests.auth import AuthBase
 import time
 import traceback
 
+from requests.auth import AuthBase
+
 from sickbeard import logger, tvcache
-from sickrage.helper.common import try_int
-from sickrage.helper.common import convert_size
+from sickrage.helper.common import convert_size, try_int
 from sickrage.providers.torrent.TorrentProvider import TorrentProvider
 
 

@@ -18,12 +18,12 @@
 # You should have received a copy of the GNU General Public License
 # along with SickRage. If not, see <http://www.gnu.org/licenses/>.
 
+from libtrakt import TraktAPI
+from libtrakt.exceptions import traktAuthException, traktException, traktServerBusy
+
 import sickbeard
 from sickbeard import logger
 from sickrage.helper.exceptions import ex
-
-from libtrakt import TraktAPI
-from libtrakt.exceptions import traktException, traktServerBusy, traktAuthException
 
 
 class Notifier(object):

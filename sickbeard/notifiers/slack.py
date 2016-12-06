@@ -19,10 +19,11 @@
 from __future__ import unicode_literals
 
 import json
+
 import requests
 
 import sickbeard
-from sickbeard import logger, common
+from sickbeard import common, logger
 from sickrage.helper.exceptions import ex
 
 

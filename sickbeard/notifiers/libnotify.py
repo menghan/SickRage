@@ -18,11 +18,11 @@
 # You should have received a copy of the GNU General Public License
 # along with SickRage. If not, see <http://www.gnu.org/licenses/>.
 
-import os
 import cgi
-import sickbeard
+import os
 
-from sickbeard import logger, common
+import sickbeard
+from sickbeard import common, logger
 from sickrage.helper.encoding import ek
 
 

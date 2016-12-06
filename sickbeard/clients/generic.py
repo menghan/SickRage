@@ -21,14 +21,15 @@ from __future__ import unicode_literals
 
 import re
 import time
+from base64 import b16encode, b32decode
 from hashlib import sha1
+
+import bencode
 from requests.compat import urlencode
 from requests.models import HTTPError
-from base64 import b16encode, b32decode
-import bencode
 
 import sickbeard
-from sickbeard import logger, helpers
+from sickbeard import helpers, logger
 
 
 class GenericClient(object):  # pylint: disable=too-many-instance-attributes

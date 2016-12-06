@@ -21,6 +21,7 @@ from __future__ import unicode_literals
 
 import re
 from collections import OrderedDict
+
 from requests.compat import urljoin
 
 import sickbeard

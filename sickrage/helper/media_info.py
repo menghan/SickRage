@@ -18,13 +18,14 @@
 # You should have received a copy of the GNU General Public License
 # along with SickRage. If not, see <http://www.gnu.org/licenses/>.
 
-from __future__ import unicode_literals, print_function
+from __future__ import print_function, unicode_literals
 
-import io
 import binascii
-from enzyme import MKV
+import io
 
-from pkg_resources import get_distribution, DistributionNotFound
+from enzyme import MKV
+from pkg_resources import DistributionNotFound, get_distribution
+
 import sickbeard
 
 try:

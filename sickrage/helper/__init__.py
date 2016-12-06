@@ -1,4 +1,5 @@
 # coding=utf-8
-from common import setup_github, pretty_file_size, episode_num, CUSTOM_GLOB as glob, \
-    HTTP_STATUS_CODES, MEDIA_EXTENSIONS, SUBTITLE_EXTENSIONS, try_int, sanitize_filename
+from common import CUSTOM_GLOB as glob, HTTP_STATUS_CODES, MEDIA_EXTENSIONS, SUBTITLE_EXTENSIONS, episode_num, pretty_file_size, sanitize_filename, \
+    setup_github, try_int
 from media_info import video_screen_size
+

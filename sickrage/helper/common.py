@@ -23,9 +23,9 @@ Common helper functions
 
 from __future__ import unicode_literals
 
+import glob
 import os
 import re
-import glob
 from fnmatch import fnmatch
 
 from github import Github

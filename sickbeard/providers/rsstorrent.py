@@ -23,12 +23,12 @@ from __future__ import unicode_literals
 import io
 import os
 import re
-from requests.utils import add_dict_to_cookiejar
+
 import bencode
+from requests.utils import add_dict_to_cookiejar
 
 import sickbeard
 from sickbeard import helpers, logger, tvcache
-
 from sickrage.helper.encoding import ek
 from sickrage.helper.exceptions import ex
 from sickrage.providers.torrent.TorrentProvider import TorrentProvider

@@ -18,17 +18,17 @@
 # You should have received a copy of the GNU General Public License
 # along with SickRage. If not, see <http://www.gnu.org/licenses/>.
 
-from datetime import datetime
-import jsonrpclib
 import math
 import socket
 import time
+from datetime import datetime
+
+import jsonrpclib
 
 import sickbeard
 from sickbeard import classes, logger, scene_exceptions, tvcache
 from sickbeard.common import cpu_presets
 from sickbeard.helpers import sanitizeSceneName
-
 from sickrage.helper.common import episode_num
 from sickrage.helper.exceptions import AuthException, ex
 from sickrage.providers.torrent.TorrentProvider import TorrentProvider

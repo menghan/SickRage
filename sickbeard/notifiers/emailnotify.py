@@ -24,19 +24,16 @@
 ##############################################################################
 
 from __future__ import unicode_literals
-import smtplib
-# import traceback
+
 import ast
+import re
+import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.utils import formatdate
 
-import re
-
 import sickbeard
-
-from sickbeard import logger
-from sickbeard import db
+from sickbeard import db, logger
 from sickrage.helper.encoding import ss
 
 

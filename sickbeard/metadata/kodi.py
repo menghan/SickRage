@@ -20,8 +20,7 @@
 
 import os
 
-from sickbeard.metadata import generic
-from sickbeard.metadata import kodi_12plus
+from sickbeard.metadata import generic, kodi_12plus
 from sickrage.helper.common import replace_extension
 from sickrage.helper.encoding import ek
 

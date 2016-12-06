@@ -1,10 +1,10 @@
 # coding=utf-8
 from anidbhttp import anidbquery
 from anidbhttp.query import QUERY_HOT
-from sickbeard import helpers
-from sickrage.helper.common import try_int
 
 from recommended import RecommendedShow
+from sickbeard import helpers
+from sickrage.helper.common import try_int
 
 
 class AnidbPopular(object):

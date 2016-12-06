@@ -18,17 +18,18 @@
 # along with SickRage. If not, see <http://www.gnu.org/licenses/>.
 
 import os
-import time
-import re
 import os.path
-import sickbeard
-from sickbeard.name_parser import regexes
+import re
+import time
 
-from sickbeard import logger, helpers, scene_numbering, common, scene_exceptions, db
+import dateutil
+
+import sickbeard
+from sickbeard import common, db, helpers, logger, scene_exceptions, scene_numbering
+from sickbeard.name_parser import regexes
 from sickrage.helper.common import remove_extension
 from sickrage.helper.encoding import ek
 from sickrage.helper.exceptions import ex
-import dateutil
 
 
 class NameParser(object):

@@ -16,6 +16,7 @@
 # along with SickRage.  If not, see <http://www.gnu.org/licenses/>.
 
 import re
+
 from requests.compat import urlencode
 
 from sickbeard import helpers

@@ -19,11 +19,11 @@
 # You should have received a copy of the GNU General Public License
 # along with SickRage. If not, see <http://www.gnu.org/licenses/>.
 
+import time
 import urllib2
 from xml.dom.minidom import parseString
-import sickbeard
-import time
 
+import sickbeard
 from sickbeard import logger
 
 try:

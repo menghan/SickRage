@@ -18,17 +18,17 @@
 # You should have received a copy of the GNU General Public License
 # along with SickRage. If not, see <http://www.gnu.org/licenses/>.
 
+import base64
 import httplib
+import socket
+import time
 import urllib
 import urllib2
-import socket
-import base64
-import time
 
 import sickbeard
-from sickbeard import logger, common
-from sickrage.helper.exceptions import ex
+from sickbeard import common, logger
 from sickrage.helper.encoding import ss
+from sickrage.helper.exceptions import ex
 
 try:
     import xml.etree.cElementTree as etree

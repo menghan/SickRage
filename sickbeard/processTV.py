@@ -22,9 +22,7 @@ import os
 import shutil
 import stat
 
-from unrar2 import RarFile
-from unrar2.rar_exceptions import ArchiveHeaderBroken, FileOpenError, IncorrectRARPassword, InvalidRARArchive, \
-    InvalidRARArchiveUsage
+from rarfile import RarFile
 
 import sickbeard
 from sickbeard import common, db, failedProcessor, helpers, logger, postProcessor
@@ -445,26 +443,28 @@ def unRAR(path, rarFiles, force, result):  # pylint: disable=too-many-branches,t
                 if skip_file:
                     continue
 
-                rar_handle.extract(path=path, withSubpath=False, overwrite=False)
+                rar_handle.extractall(path)
                 for x in rar_handle.infolist():
                     if not x.isdir:
                         basename = ek(os.path.basename, x.filename)
                         if basename not in unpacked_files:
                             unpacked_files.append(basename)
-
-            except ArchiveHeaderBroken:
-                failure = (u'Archive Header Broken', u'Unpacking failed because the Archive Header is Broken')
-            except IncorrectRARPassword:
-                failure = (u'Incorrect RAR Password', u'Unpacking failed because of an Incorrect Rar Password')
-            except FileOpenError:
-                failure = (u'File Open Error, check the parent folder and destination file permissions.',
-                           u'Unpacking failed with a File Open Error (file permissions?)')
-            except InvalidRARArchiveUsage:
-                failure = (u'Invalid Rar Archive Usage', u'Unpacking Failed with Invalid Rar Archive Usage')
-            except InvalidRARArchive:
-                failure = (u'Invalid Rar Archive', u'Unpacking Failed with an Invalid Rar Archive Error')
+            #
+            # except ArchiveHeaderBroken:
+            #     failure = (u'Archive Header Broken', u'Unpacking failed because the Archive Header is Broken')
+            # except IncorrectRARPassword:
+            #     failure = (u'Incorrect RAR Password', u'Unpacking failed because of an Incorrect Rar Password')
+            # except FileOpenError:
+            #     failure = (u'File Open Error, check the parent folder and destination file permissions.',
+            #                u'Unpacking failed with a File Open Error (file permissions?)')
+            # except InvalidRARArchiveUsage:
+            #     failure = (u'Invalid Rar Archive Usage', u'Unpacking Failed with Invalid Rar Archive Usage')
+            # except InvalidRARArchive:
+            #     failure = (u'Invalid Rar Archive', u'Unpacking Failed with an Invalid Rar Archive Error')
+            # except Exception as e:
+            #     failure = (ex(e), u'Unpacking failed for an unknown reason')
             except Exception as e:
-                failure = (ex(e), u'Unpacking failed for an unknown reason')
+                failure = (u'Error Extracting', ex(e))
             finally:
                 if rar_handle:
                     del rar_handle

@@ -18,10 +18,11 @@
 # You should have received a copy of the GNU General Public License
 # along with SickRage. If not, see <http://www.gnu.org/licenses/>.
 
-import sickbeard
+from os import name
 
 from chardet import detect
-from os import name
+
+import sickbeard
 
 
 def ek(function, *args, **kwargs):

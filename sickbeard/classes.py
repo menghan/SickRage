@@ -19,9 +19,9 @@
 # along with SickRage. If not, see <http://www.gnu.org/licenses/>.
 
 import datetime
+import re
 import sys
 import urllib
-import re
 
 import sickbeard
 from sickbeard.common import Quality, USER_AGENT

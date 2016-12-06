@@ -19,13 +19,13 @@
 # along with SickRage. If not, see <http://www.gnu.org/licenses/>.
 
 import re
-from requests.utils import add_dict_to_cookiejar, dict_from_cookiejar
 import time
 import traceback
 
+from requests.utils import add_dict_to_cookiejar, dict_from_cookiejar
+
 from sickbeard import logger, tvcache
 from sickbeard.bs4_parser import BS4Parser
-
 from sickrage.helper.common import convert_size, try_int
 from sickrage.providers.torrent.TorrentProvider import TorrentProvider
 

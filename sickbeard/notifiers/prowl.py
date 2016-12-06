@@ -21,7 +21,8 @@
 ##############################################################################
 
 import socket
-from httplib import HTTPSConnection, HTTPException
+from httplib import HTTPException, HTTPSConnection
+
 from requests.compat import urlencode
 
 try:

@@ -19,11 +19,11 @@
 # along with SickRage. If not, see <http://www.gnu.org/licenses/>.
 
 import os
-import sickbeard
+from urllib2 import HTTPError, Request, urlopen
 
 from requests.compat import urlencode
-from urllib2 import Request, urlopen, HTTPError
 
+import sickbeard
 from sickbeard import logger
 from sickrage.helper.encoding import ek
 from sickrage.helper.exceptions import ex

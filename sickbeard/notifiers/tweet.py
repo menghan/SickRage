@@ -19,8 +19,7 @@
 # along with SickRage. If not, see <http://www.gnu.org/licenses/>.
 
 import sickbeard
-
-from sickbeard import logger, common
+from sickbeard import common, logger
 from sickrage.helper.exceptions import ex
 
 # parse_qsl moved to urlparse module in v2.6

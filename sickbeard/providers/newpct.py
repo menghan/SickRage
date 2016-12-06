@@ -19,13 +19,13 @@
 # along with SickRage. If not, see <http://www.gnu.org/licenses/>.
 
 from __future__ import unicode_literals
-from requests.compat import urljoin
+
 import re
 
-from sickbeard import helpers
-from sickbeard import logger, tvcache
-from sickbeard.bs4_parser import BS4Parser
+from requests.compat import urljoin
 
+from sickbeard import helpers, logger, tvcache
+from sickbeard.bs4_parser import BS4Parser
 from sickrage.helper.common import convert_size
 from sickrage.providers.torrent.TorrentProvider import TorrentProvider
 
@@ -203,7 +203,7 @@ class newpctProvider(TorrentProvider):
         title = re.sub(r'\[BLuRay[^\[]*]', '720p BluRay x264', title, flags=re.I)
         title = re.sub(r'\[BRrip[^\[]*]', '720p BluRay x264', title, flags=re.I)
         title = re.sub(r'\[BDrip[^\[]*]', '720p BluRay x264', title, flags=re.I)
-        
+
         #detect hdtv/bluray by url
         #hdtv 1080p example url: http://www.newpct.com/descargar-seriehd/foo/capitulo-610/hdtv-1080p-ac3-5-1/
         #hdtv 720p example url: http://www.newpct.com/descargar-seriehd/foo/capitulo-26/hdtv-720p-ac3-5-1/
@@ -219,7 +219,7 @@ class newpctProvider(TorrentProvider):
         url_720p = re.search(r'720p', url, flags=re.I)
         url_1080p = re.search(r'1080p', url, flags=re.I)
         url_bluray = re.search(r'bluray', url, flags=re.I)
-        
+
         if not title_hdtv and url_hdtv:
             title += ' HDTV'
             if not title_x264:

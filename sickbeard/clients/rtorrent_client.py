@@ -27,8 +27,7 @@
 from rtorrent import RTorrent  # pylint: disable=import-error
 
 import sickbeard
-
-from sickbeard import logger, ex
+from sickbeard import ex, logger
 from sickbeard.clients.generic import GenericClient
 
 

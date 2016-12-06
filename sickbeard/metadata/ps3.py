@@ -21,7 +21,6 @@
 import os
 
 from sickbeard.metadata import generic
-
 from sickrage.helper.encoding import ek
 
 

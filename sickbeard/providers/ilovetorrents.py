@@ -20,12 +20,12 @@
 
 import re
 import traceback
+
 from requests.compat import urljoin
 from requests.utils import dict_from_cookiejar
 
 from sickbeard import logger, tvcache
 from sickbeard.bs4_parser import BS4Parser
-
 from sickrage.helper.common import convert_size, try_int
 from sickrage.providers.torrent.TorrentProvider import TorrentProvider
 
@@ -33,10 +33,10 @@ from sickrage.providers.torrent.TorrentProvider import TorrentProvider
 class ILoveTorrentsProvider(TorrentProvider):  # pylint: disable=too-many-instance-attributes
 
     def __init__(self):
-    
+
         # Provider Init
         TorrentProvider.__init__(self, "ILoveTorrents")
-        
+
         # URLs
         self.url = 'https://www.ilovetorrents.me/'
         self.urls = {
@@ -50,11 +50,11 @@ class ILoveTorrentsProvider(TorrentProvider):  # pylint: disable=too-many-instan
         # Credentials
         self.username = None
         self.password = None
-        
-        # Torrent Stats        
+
+        # Torrent Stats
         self.minseed = None
         self.minleech = None
-        
+
         # Proper Strings
         self.proper_strings = ["PROPER", "REPACK", "REAL"]
 

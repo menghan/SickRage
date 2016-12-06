@@ -18,9 +18,9 @@
 # You should have received a copy of the GNU General Public License
 # along with SickRage. If not, see <http://www.gnu.org/licenses/>.
 
+import json
 import os
 import re
-import json
 from base64 import b64encode
 
 import sickbeard

@@ -51,7 +51,7 @@ from tornado.concurrent import run_on_executor
 from concurrent.futures import ThreadPoolExecutor
 
 from dateutil import tz
-from unrar2 import RarFile
+from rarfile import RarFile
 import adba
 from libtrakt import TraktAPI
 from libtrakt.exceptions import traktException
@@ -91,6 +91,7 @@ from sickrage.system.Restart import Restart
 from sickrage.system.Shutdown import Shutdown
 
 mako_lookup = {}
+
 
 def get_lookup():
     mako_lookup['mako'] = mako_lookup.get('mako') or TemplateLookup(
@@ -4385,10 +4386,15 @@ class ConfigPostProcessing(Config):
         """
 
         try:
-            rar_path = ek(os.path.join, sickbeard.PROG_DIR, 'lib', 'unrar2', 'test.rar')
-            testing = RarFile(rar_path).read_files('*test.txt')
-            if testing[0][1] == 'This is only a test.':
+            testing = ''
+            rar_path = ek(os.path.join, sickbeard.PROG_DIR, 'lib', 'test.rar')
+            with RarFile(rar_path) as rf:
+                with rf.open(ek(os.path.join, 'test', 'test.txt')) as f:
+                    testing = f.read()
+
+            if testing == 'This is only a test.':
                 return 'supported'
+
             logger.log(u'Rar Not Supported: Can not read the content of test file', logger.ERROR)
             return 'not supported'
         except Exception as e:

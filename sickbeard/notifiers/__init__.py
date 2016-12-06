@@ -19,11 +19,8 @@
 # along with SickRage. If not, see <http://www.gnu.org/licenses/>.
 
 import sickbeard
-
-from sickbeard.notifiers import kodi, plex, emby, nmj, nmjv2, synoindex, \
-    synologynotifier, pytivo, growl, prowl, libnotify, pushover, boxcar2, \
-    nma, pushalot, pushbullet, freemobile, telegram, tweet, trakt, emailnotify, \
-    slack, join
+from sickbeard.notifiers import boxcar2, emailnotify, emby, freemobile, growl, join, kodi, libnotify, nma, nmj, nmjv2, plex, prowl, pushalot, pushbullet, \
+    pushover, pytivo, slack, synoindex, synologynotifier, telegram, trakt, tweet
 
 # home theater / nas
 kodi_notifier = kodi.Notifier()

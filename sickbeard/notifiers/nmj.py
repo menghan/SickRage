@@ -18,12 +18,12 @@
 # You should have received a copy of the GNU General Public License
 # along with SickRage. If not, see <http://www.gnu.org/licenses/>.
 
+import re
+import telnetlib
 import urllib
 import urllib2
-import sickbeard
-import telnetlib
-import re
 
+import sickbeard
 from sickbeard import logger
 from sickrage.helper.exceptions import ex
 

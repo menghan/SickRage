@@ -1,6 +1,7 @@
 # coding=utf-8
 
 from tvdb_api.tvdb_api import Tvdb
+
 from sickbeard import helpers
 
 initConfig = {
