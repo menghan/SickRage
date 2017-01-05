@@ -24,6 +24,7 @@ import re
 import validators
 from requests.compat import urljoin
 
+from sickbeard import common
 from sickbeard import logger, tvcache
 from sickbeard.bs4_parser import BS4Parser
 
@@ -111,9 +112,18 @@ class ThePirateBayProvider(TorrentProvider):  # pylint: disable=too-many-instanc
                         search_url = urljoin(self.custom_url, search_url.split(self.url)[1])
 
                     if mode != "RSS":
-                        search_params["q"] = search_string
                         logger.log("Search string: {}".format
                                    (search_string.decode("utf-8")), logger.DEBUG)
+
+                        countryNames = common.countryList.keys() + common.countryList.values()
+                        for n in countryNames:
+                            old_search_string, search_string = search_string, search_string.replace(' (%s)' % n, '')
+                            if search_string != old_search_string:
+                                logger.log("Adjusted Search string: {}".format
+                                           (search_string.decode("utf-8")), logger.DEBUG)
+                                break
+
+                        search_params["q"] = search_string
 
                         # Prevents a 302 redirect, since there is always a 301 from .se to the best mirror having an extra
                         # redirect is excessive on the provider and spams the debug log unnecessarily
