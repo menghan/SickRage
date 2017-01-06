@@ -199,51 +199,47 @@ def pickBestResult(results, show):  # pylint: disable=too-many-branches
 
     logger.log("Picking the best result out of " + str([x.name for x in results]), logger.DEBUG)
 
-    bestResult = None
+    anyQualities, bestQualities = Quality.splitQuality(show.quality)
 
-    # find the best result for the current episode
-    for cur_result in results:
+    def filterResult(cur_result):
         if show and cur_result.show is not show:
-            continue
+            return
 
         # build the black And white list
         if show.is_anime:
             if not show.release_groups.is_valid(cur_result):
-                continue
+                return
 
         logger.log("Quality of " + cur_result.name + " is " + Quality.qualityStrings[cur_result.quality])
 
-        anyQualities, bestQualities = Quality.splitQuality(show.quality)
-
         if cur_result.quality not in anyQualities + bestQualities:
             logger.log(cur_result.name + " is a quality we know we don't want, rejecting it", logger.DEBUG)
-            continue
+            return
 
         if not show_name_helpers.filter_bad_releases(cur_result.name, parse=False, show=show):
-            continue
+            return
 
         if hasattr(cur_result, 'size'):
             if sickbeard.USE_FAILED_DOWNLOADS and failed_history.hasFailed(cur_result.name, cur_result.size,
                                                                            cur_result.provider.name):
                 logger.log(cur_result.name + " has previously failed, rejecting it")
-                continue
+                return
+        return True
 
-        if not bestResult:
-            bestResult = cur_result
-        elif cur_result.quality in bestQualities and (bestResult.quality < cur_result.quality or bestResult.quality not in bestQualities):
-            bestResult = cur_result
-        elif cur_result.quality in anyQualities and bestResult.quality not in bestQualities and bestResult.quality < cur_result.quality:
-            bestResult = cur_result
-        elif bestResult.quality == cur_result.quality:
-            if "proper" in cur_result.name.lower() or "real" in cur_result.name.lower() or "repack" in cur_result.name.lower():
-                logger.log("Preferring " + cur_result.name + " (repack/proper/real over nuked)")
-                bestResult = cur_result
-            elif "internal" in bestResult.name.lower() and "internal" not in cur_result.name.lower():
-                logger.log("Preferring " + cur_result.name + " (normal instead of internal)")
-                bestResult = cur_result
-            elif "xvid" in bestResult.name.lower() and "x264" in cur_result.name.lower():
-                logger.log("Preferring " + cur_result.name + " (x264 over xvid)")
-                bestResult = cur_result
+    def sortResultKey(cur_result):
+        v = []
+        v.append(cur_result.quality in bestQualities)
+        v.append(cur_result.quality)
+        v.append(any([goodName in cur_result.name.lower() for goodName in ('proper', 'real', 'repack')]))
+        v.append('internal' not in cur_result.name.lower())
+        # x265 over x264 over xvid
+        for enc in ('x265', 'x264', 'xvid'):
+            v.append(enc in cur_result.name.lower())
+        return v
+
+    results = filter(filterResult, results)
+    results.sort(key=sortResultKey, reverse=True)
+    bestResult = results[0] if results else None
 
     if bestResult:
         logger.log("Picked " + bestResult.name + " as the best", logger.DEBUG)
