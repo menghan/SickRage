@@ -151,7 +151,7 @@ class Home(WebRoot):
         # noinspection PyPep8
         sql_statement += ' (SELECT COUNT(*) FROM tv_episodes WHERE showid=tv_eps.showid AND season > 0 AND episode > 0 AND airdate > 1 AND status IN ' + status_quality + ') AS ep_snatched,'
         # noinspection PyPep8
-        sql_statement += ' (SELECT COUNT(*) FROM tv_episodes WHERE showid=tv_eps.showid AND season > 0 AND episode > 0 AND airdate > 1 AND status IN ' + status_download + ') AS ep_downloaded,'
+        sql_statement += ' (SELECT COUNT(*) FROM tv_episodes WHERE showid=tv_eps.showid AND season > 0 AND episode > 0 AND status IN ' + status_download + ') AS ep_downloaded,'
         sql_statement += ' (SELECT COUNT(*) FROM tv_episodes WHERE showid=tv_eps.showid AND season > 0 AND episode > 0 AND airdate > 1'
         sql_statement += ' AND ((airdate <= ' + today + ' AND status IN (' + ','.join([str(SKIPPED), str(WANTED), str(FAILED)]) + '))'
         sql_statement += ' OR (status IN ' + status_quality + ') OR (status IN ' + status_download + '))) AS ep_total,'
