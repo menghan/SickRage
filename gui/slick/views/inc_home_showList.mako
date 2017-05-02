@@ -269,6 +269,10 @@
                             if not cur_total:
                                 cur_total = 0
 
+                            ## fix some chinese tv don't have airdate
+                            if cur_total < cur_downloaded:
+                                cur_total = cur_downloaded
+
                             show_size = show_stat[curShow.indexerid]['show_size']
 
                         download_stat = str(cur_downloaded)
