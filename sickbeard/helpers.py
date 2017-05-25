@@ -47,7 +47,6 @@ from itertools import cycle, izip
 import adba
 import bencode
 import certifi
-import cfscrape
 import rarfile
 import requests
 import six
@@ -1374,7 +1373,8 @@ def make_session():
 
     session.headers.update({'User-Agent': USER_AGENT, 'Accept-Encoding': 'gzip,deflate'})
 
-    session = cfscrape.create_scraper(sess=session)
+    # import cfscrape
+    # session = cfscrape.create_scraper(sess=session)
 
     return CacheControl(sess=session, cache_etags=True)
 
