@@ -47,7 +47,6 @@ from itertools import cycle, izip
 
 import adba
 import certifi
-import cfscrape
 import requests
 from cachecontrol import CacheControl
 from requests.utils import urlparse
@@ -1363,7 +1362,8 @@ def make_session():
 
     session.headers.update({'User-Agent': USER_AGENT, 'Accept-Encoding': 'gzip,deflate'})
 
-    session = cfscrape.create_scraper(sess=session)
+    # import cfscrape
+    # session = cfscrape.create_scraper(sess=session)
 
     return CacheControl(sess=session, cache_etags=True)
 
